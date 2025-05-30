@@ -1,0 +1,80 @@
+/* WorkshopPage.css */
+
+.workshop-container {
+  padding: 40px 20px;
+  background-color: #f8f9fa; /* Same as modal background */
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif; /* Match modal font */
+}
+
+.workshop-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 0 20px;
+}
+
+.session-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* match modal shadow */
+  transition: transform 0.2s ease-in-out;
+}
+
+.session-card:hover {
+  transform: translateY(-4px);
+}
+
+.session-title {
+  font-size: 1.25rem;
+  color: #222;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.session-date {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.session-seats {
+  font-size: 0.9rem;
+  color: #007bff; /* match modal payButton blue */
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.book-btn {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-weight: 600;
+}
+
+.book-btn:hover {
+  background-color: #0056b3;
+}
+
+.loading,
+.empty {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 50px;
+  color: #666;
+  font-family: 'Segoe UI', sans-serif;
+}

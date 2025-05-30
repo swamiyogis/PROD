@@ -1,0 +1,86 @@
+.reviewCard {
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  max-width: 360px;
+  padding: 20px;
+  user-select: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease-in-out both;
+}
+
+.reviewCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.starsContainer {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.starIcon {
+  color: #fbbc04;
+  font-size: 22px;
+  margin: 0 2px;
+}
+
+.photoContainer {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  width: 100%;         /* full width of the parent */
+  max-width: 100px;    /* max width you want the photo container to have */
+}
+
+.photoImg {
+  width: 100%;         /* make image fill the container width */
+  height: auto;        /* keep aspect ratio */
+  max-width: 60px;     /* max size on larger screens */
+  aspect-ratio: 1 / 1; /* keep square ratio */
+  border-radius: 50%;  /* make it circle */
+  object-fit: cover;   /* crop to fit */
+  border: 2px solid #2f80ed;
+}
+
+
+.photoFallbackIcon {
+  font-size: 50px;
+  color: #ccc;
+}
+
+.reviewText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.4;
+  text-align: center;
+  margin: 10px 0;
+  padding: 0 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.reviewName {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #2f80ed;
+  margin-top: 8px;
+}

@@ -1,0 +1,60 @@
+.footer {
+  background-color: #a7c7c7;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.footer-logo .dot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 20px);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  background-color: black;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-content h3 {
+  font-size: 24px;
+}
+
+.footer-columns {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-column h4 {
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 5px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.back-to-top {
+  cursor: pointer;
+}

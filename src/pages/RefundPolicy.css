@@ -1,0 +1,41 @@
+.refund-policy-container {
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 40px 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.7;
+}
+
+.refund-title {
+  font-size: 2.5rem;
+  margin-bottom: 24px;
+  color: #2f80ed;
+  text-align: center;
+}
+
+.refund-text {
+  font-size: 1.125rem;
+  margin-bottom: 16px;
+  color: #555;
+  text-align: justify;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .refund-policy-container {
+    padding: 32px 16px;
+    margin: 40px 16px;
+  }
+
+  .refund-title {
+    font-size: 2rem;
+  }
+
+  .refund-text {
+    font-size: 1rem;
+  }
+}

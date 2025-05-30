@@ -1,0 +1,29 @@
+.scroll-wrapper {
+  width: 100%;
+  overflow: hidden;
+  height: 320px;
+  position: relative;
+}
+
+.scroll-track {
+  display: flex;
+  animation: scroll-left 30s linear infinite;
+}
+
+.scroll-item {
+  flex-shrink: 0;
+  width: 200px;
+  height: 300px;
+  margin: 0 4px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
