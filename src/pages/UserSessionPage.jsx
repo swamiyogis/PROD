@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import './UserSessionPage.css';
-import { useUser } from '../providers/UserProvider'; // <-- use the correct provider
+import { useUser } from '../providers/UserProvider';
 
 function UserSessionsPage() {
-  const { session: sessions, getSession } = useUser(); // sessions from UserProvider
-  useEffect(()=> {
-    getSession()
-  }, [])
+  const { session: sessions, getSession } = useUser();
+
+  useEffect(() => {
+    getSession();
+  }, []);
+
   const formatDateTime = (dateString) => {
     const date = new Date(dateString);
     const now = new Date();
@@ -36,12 +38,17 @@ function UserSessionsPage() {
       ) : (
         <div className="user-session-grid">
           {sessions.map((session) => {
-            const { date, time, isExpired } = formatDateTime(session.Date); // session.Date is assumed key
+            const { date, time, isExpired } = formatDateTime(session.Date);
+            const statusClass = session.status.toLowerCase();
+
             return (
-              <div key={session.order_id} className="user-session-card">
+              <div
+                key={session.order_id}
+                className={`user-session-card ${statusClass}`}
+              >
                 <div className="user-session-header">
                   <div className="user-session-id">Session ID: {session.session_id}</div>
-                  <div className={`user-session-status ${session.status.toLowerCase()}`}>
+                  <div className={`user-session-status ${statusClass}`}>
                     {session.status}
                   </div>
                 </div>
@@ -49,13 +56,16 @@ function UserSessionsPage() {
                 <div className="user-session-info">⏰ {time}</div>
                 <div className="user-session-info">👤 {session.instructor}</div>
                 <div className="user-session-price">₹ {session.amount}/-</div>
-                <button
-                  className="user-session-btn"
-                  disabled={isExpired}
-                  onClick={() => alert(`Joining session ${session.session_id}`)}
-                >
-                  {isExpired ? 'Expired' : 'Join Now'}
-                </button>
+
+                {session.status !== 'Pending' && session.status !== 'Refunded' && (
+                  <button
+                    className="user-session-btn"
+                    disabled={isExpired}
+                    onClick={() => alert(`Joining session ${session.session_id}`)}
+                  >
+                    {isExpired ? 'Expired' : 'Join Now'}
+                  </button>
+                )}
               </div>
             );
           })}

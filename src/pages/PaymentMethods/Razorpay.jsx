@@ -1,23 +1,22 @@
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getAuth } from "firebase/auth";
 import axios from "axios";
 
-const PaymentPage = () => {
+const Razorpay = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const sessionId = location.state?.sessionId;
+  const token = location.state?.token;
 
   useEffect(() => {
-    console.log(sessionId)
     const createOrder = async () => {
       try {
-        const token = await getFirebaseUserToken();
-        if (!token) return;
-        console.log({
-            token,
-            sessions_id: sessionId,
-          },)
+        if (!token || !sessionId) {
+          console.error("Missing token or sessionId");
+          return;
+        }
+
+        console.log("Creating Razorpay order with:", { token, sessionId });
 
         const response = await axios.post(
           import.meta.env.VITE_CREATE_ORDER,
@@ -32,11 +31,9 @@ const PaymentPage = () => {
           }
         );
 
-
         if (response.status === 200) {
           const { order_id } = response.data;
           startPayment(order_id);
-          console.log(response)
         } else {
           console.error("Order creation failed", response.data);
         }
@@ -46,17 +43,7 @@ const PaymentPage = () => {
     };
 
     createOrder();
-  }, [sessionId]);
-
-  const getFirebaseUserToken = async () => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (user) {
-    
-      return await user.getIdToken();
-    }
-    return null;
-  };
+  }, [sessionId, token, navigate]);
 
   const startPayment = (orderId) => {
     const options = {
@@ -73,6 +60,7 @@ const PaymentPage = () => {
     const rzp = new window.Razorpay(options);
 
     rzp.on("payment.failed", function (response) {
+      console.warn("Payment failed", response);
       navigate("/");
     });
 
@@ -88,4 +76,4 @@ const PaymentPage = () => {
   );
 };
 
-export default PaymentPage;
+export default Razorpay;

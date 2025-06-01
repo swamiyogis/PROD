@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import './Authpage.css';
 import { handleGoogleSignIn } from '../utils/handleGoogleSignIn';
+import { useNavigate } from 'react-router-dom';
 
 const AuthPage = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
 
 
   return (
     <div className="auth-container" onClick={() => document.activeElement.blur()}>
       <div className="auth-content">
-        <h1 className="auth-title">SwamiYogi</h1>
+        <div className="auth-title" onClick={() => navigate('/')}>
+          SwamiYogi
+        </div>
 
         <div className="auth-spacer" />
 

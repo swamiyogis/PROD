@@ -37,6 +37,7 @@
 .contact-form input,
 .contact-form textarea {
   padding: 12px;
+  color: #000;
   border: 1px solid #ccc;
   font-size: 16px;
   background: #f9f9f9;

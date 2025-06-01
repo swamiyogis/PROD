@@ -13,8 +13,6 @@ export const handleGoogleSignIn = async () => {
 
     // Get signed-in user info
     const user = result.user;
-
-    console.log('User signed in:', user);
     // Return user or token if needed
     return { user, token };
 

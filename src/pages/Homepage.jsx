@@ -9,6 +9,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import AutoScrollGrid from '../components/AutoScrollGrid';
 import Footer from '../components/Footer';
 import Contact from './Contact';
+import fetchBanners from '../utils/fetchBanner';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -16,12 +17,16 @@ const HomePage = () => {
   const [showReviews, setShowReviews] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [heroImage, setHeroImage] = useState('');
 
   useEffect(() => {
     fetchReviews(5).then((data) => {
       setReviews(data);
       setIsLoading(false);
     });
+     fetchBanners().then((data)=> {
+      setHeroImage(data)
+     })
   }, []);
 
   useEffect(() => {
@@ -40,10 +45,16 @@ const HomePage = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+
   return (
     <div className="homepage">
       <section className="hero">
-        <div className="hero-background" />
+        <div
+          className="hero-background"
+          style={{
+            backgroundImage: `url('${heroImage}')`
+          }}
+        />
         <div className="hero-content">
           <p>Calorie control, balanced nutrition</p>
           <h1>Start living your <br /> healthiest life</h1>

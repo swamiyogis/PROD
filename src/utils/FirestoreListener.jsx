@@ -20,15 +20,31 @@ export const FirestoreListener = () => {
       const newSessions = data.sessions || [];
 
       const prevSessions = prevSessionsRef.current;
-      const prevLength = prevSessions.length;
-      const newLength = newSessions.length;
+
+      const serialize = (session) => JSON.stringify(session);
 
       if (prevSessions.length === 0) {
-        // First time load; don't show any toast
-      } else if (newLength > prevLength) {
-        toast.success("✅ Booking confirmed");
-      } else if (newLength < prevLength) {
-        toast.warn("⚠️ Session removed");
+        // First time load - do nothing
+      } else {
+        const addedSessions = newSessions.filter(
+          (s) => !prevSessions.some((p) => serialize(p) === serialize(s))
+        );
+
+        for (const session of addedSessions) {
+          if (session.status === "Confirmed") {
+            toast.success("✅ Booking confirmed");
+          } else if (session.status === "Pending") {
+            toast.info("⏳ Booking pending");
+          }
+        }
+
+        const removedSessions = prevSessions.filter(
+          (p) => !newSessions.some((s) => serialize(s) === serialize(p))
+        );
+
+        if (removedSessions.length > 0) {
+          toast.warn("⚠️ Session removed");
+        }
       }
 
       prevSessionsRef.current = newSessions;

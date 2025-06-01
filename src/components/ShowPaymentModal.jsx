@@ -16,7 +16,6 @@ function ShowPaymentModal ({ show, onHide, session }) {
   };
 
   const handlePayNow = () => {
-    console.log(session.sessionId)
     navigate('/payment', { state: { sessionId: session.sessionId } });
   };
 

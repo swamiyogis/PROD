@@ -6,9 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export const AppWrapper = ({ children }) => {
   return (
     <>
-      {/* Global Toast Container */}
       <ToastContainer 
-        
         position="top-right" 
         autoClose={3000} 
         hideProgressBar={false} 
@@ -17,6 +15,7 @@ export const AppWrapper = ({ children }) => {
         pauseOnFocusLoss 
         draggable 
         pauseOnHover 
+        style={{ marginTop: '60px' }}  // Add space from the top
       />
       
       {/* App Routes / Children */}

@@ -12,9 +12,13 @@ const Terms = lazy(() => import('./pages/Terms'));
 const Contact = lazy(() => import('./pages/Contact'));
 const FAQs = lazy(() => import('./pages/FAQs'));
 const RefundPolicy = lazy(() => import('./pages/RefundPolicy'));
-const Paymentpage = lazy(() => import('./pages/PaymentPage'));
+const Paymentpage = lazy(() => import('./pages/PaymentMethods/PaymentsOPtionPages'));
 const AuthPage = lazy(() => import('./pages/Authpage'));
 const UserSesisonPage = lazy(() => import('./pages/UserSessionPage'))
+const RazorpayPage = lazy(() => import('./pages/PaymentMethods/Razorpay'));
+const CashfreePage = lazy(() => import('./pages/PaymentMethods/CashFree'));
+const PaytmPage = lazy(() => import('./pages/PaymentMethods/Paytm'));
+
 
 function AppRoutes() {
   return (
@@ -52,6 +56,29 @@ function AppRoutes() {
               </PrivateRoute>
             </FirebaseProvider>
           } />
+          <Route path="/payment/razorpay" element={
+            <FirebaseProvider>
+              <PrivateRoute>
+                <RazorpayPage />
+              </PrivateRoute>
+            </FirebaseProvider>
+          } />
+          <Route path="/payment/cashfree" element={
+            <FirebaseProvider>
+              <PrivateRoute>
+                <CashfreePage />
+              </PrivateRoute>
+            </FirebaseProvider>
+          } />
+          <Route path="/payment/paytm" element={
+            <FirebaseProvider>
+              <PrivateRoute>
+                <PaytmPage />
+              </PrivateRoute>
+            </FirebaseProvider>
+          } />
+
+
 
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>

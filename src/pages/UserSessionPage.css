@@ -26,10 +26,25 @@
   padding: 20px 24px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
+  border-left: 6px solid #007bff;
 }
 
 .user-session-card:hover {
   transform: translateY(-4px);
+}
+
+/* Card border colors based on status */
+.user-session-card.confirmed {
+  border-left-color: #28a745;
+}
+
+.user-session-card.pending {
+  border-left-color: #ffc107;
+}
+
+.user-session-card.refunded {
+  border-left-color: #dc3545;
 }
 
 .user-session-header {
@@ -53,6 +68,7 @@
   text-transform: capitalize;
 }
 
+/* Status-specific styling */
 .user-session-status.confirmed {
   background-color: #d4edda;
   color: #155724;
@@ -61,6 +77,11 @@
 .user-session-status.pending {
   background-color: #fff3cd;
   color: #856404;
+}
+
+.user-session-status.refunded {
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
 .user-session-info {
@@ -103,4 +124,16 @@
   font-size: 1.2rem;
   padding: 50px;
   color: #666;
+}
+
+/* Entry animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
