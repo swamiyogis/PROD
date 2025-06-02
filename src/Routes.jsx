@@ -13,7 +13,7 @@ const Contact = lazy(() => import('./pages/rules/Contact'));
 const FAQs = lazy(() => import('./pages/rules/FAQs'));
 const RefundPolicy = lazy(() => import('./pages/rules/RefundPolicy'));
 const Policy = lazy(() => import('./pages/rules/Policy'));
-const Paymentpage = lazy(() => import('./pages/PaymentMethods/PaymentsOPtionPages'));
+const Paymentpage = lazy(() => import('./pages/PaymentMethods/PaymentsOptionPages'));
 const AuthPage = lazy(() => import('./pages/Authpage'));
 const UserSesisonPage = lazy(() => import('./pages/UserSessionPage'))
 const RazorpayPage = lazy(() => import('./pages/PaymentMethods/Razorpay'));

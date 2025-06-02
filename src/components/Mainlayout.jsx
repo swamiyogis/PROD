@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../providers/AuthProvider';
 import { FaBars } from 'react-icons/fa';
-import './MainLayout.css';
+import './Mainlayout.css';
 
 function MainLayout() {
   const navigate = useNavigate();
