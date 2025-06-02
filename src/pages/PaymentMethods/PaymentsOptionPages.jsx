@@ -5,6 +5,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { useAuth } from '../../providers/AuthProvider';
 import { collection, getDocs } from 'firebase/firestore';
 import { storedb } from '../../utils/firebaseconfig'; // adjust path as needed
+import { SiRazorpay } from "react-icons/si";
+
 
 const PaymentsOptionPages = () => {
   const [selectedGateway, setSelectedGateway] = useState('');

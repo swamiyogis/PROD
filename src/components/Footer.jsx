@@ -22,8 +22,7 @@ const Footer = () => {
             <h4>About Us</h4>
             <ul>
               <li><Link to="/about/mission">Mission</Link></li>
-              <li><Link to="/about/team">Team</Link></li>
-              <li><Link to="/newsletter">Newsletter</Link></li>
+              
             </ul>
 
           </div>

@@ -1,0 +1,114 @@
+.session-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease;
+  max-width: 360px;
+  margin: auto;
+  width: 100%; /* Make it take full width on small screens */
+  box-sizing: border-box; /* include padding in width */
+}
+
+.session-card:hover {
+  transform: translateY(-6px);
+}
+
+.session-image-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+}
+
+.session-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.session-content {
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.session-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #243a57;
+  margin: 0;
+}
+
+.session-date,
+.session-seats {
+  color: #5a5a5a;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.book-btn {
+  margin-top: auto;
+  background-color: #3b7a57;
+  color: white;
+  font-weight: 600;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.book-btn:hover:not(:disabled) {
+  background-color: #2a563d;
+}
+
+.book-btn:disabled {
+  background-color: #b0b0b0;
+  cursor: not-allowed;
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+  .session-card {
+    max-width: 90vw; /* Make card narrower on small screens */
+  }
+
+  .session-image-wrapper {
+    height: 140px; /* slightly smaller image height */
+  }
+
+  .session-title {
+    font-size: 1.1rem;
+  }
+
+  .session-date,
+  .session-seats {
+    font-size: 0.85rem;
+  }
+
+  .book-btn {
+    font-size: 0.9rem;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 320px) {
+  .session-image-wrapper {
+    height: 120px;
+  }
+
+  .session-title {
+    font-size: 1rem;
+  }
+
+  .book-btn {
+    font-size: 0.85rem;
+    padding: 8px 0;
+  }
+}

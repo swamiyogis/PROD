@@ -8,6 +8,7 @@
   import './Workshop.css';
   import { fetchSession} from '../utils/fetchSession';
 import { useAuth } from '../providers/AuthProvider';
+import SessionCard from '../components/SessionCard';
 
 
   export default function WorkshopPage() {
@@ -46,35 +47,16 @@ import { useAuth } from '../providers/AuthProvider';
 
     return (
       <div className="workshop-container">
-        <h1 className="workshop-title">Upcoming Workshops</h1>
-        <div className="workshop-grid">
-          {sessions.map((session) => {
-            const { formattedDate, formattedTime, weekday } = parseSessionDate(session.date);
-
-            return (
-              <div className="session-card" key={session.sessionId}>
-                <h2 className="session-title">{session.sessionHeading}</h2>
-                <p className="session-date">
-                  {weekday}, {formattedDate} — {formattedTime}
-                </p>
-                <p className="session-seats">
-                  Seats Remaining: <strong>{session.seatsRemaining}</strong>
-                </p>
-                <button
-                  className="book-btn"
-                  onClick={() => {
-                    if (user) {
-                      setSelectedSession(session); // Show modal for this session
-                    } else {
-                      navigate('/auth');
-                    }
-                  }}
-                >
-                  Book Now
-                </button>
-              </div>
-            );
-          })}
+          <h1 className="workshop-title">Upcoming Workshops</h1>
+        <div className='workshop-grid'>
+        {sessions.map((session) => (
+          <SessionCard
+            key={session.sessionId}
+            session={session}
+            user={user}
+            onBook={setSelectedSession}
+          />
+        ))}
         </div>
 
         {/* Conditionally render the modal */}

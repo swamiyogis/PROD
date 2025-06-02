@@ -8,7 +8,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import AutoScrollGrid from '../components/AutoScrollGrid';
 import Footer from '../components/Footer';
-import Contact from './Contact';
+import Contact from './rules/Contact';
 import fetchBanners from '../utils/fetchBanner';
 
 const HomePage = () => {
@@ -48,7 +48,11 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
+
       <section className="hero">
+      <div className="announcement-bar">
+        <p>🧘‍♀️ Celebrate International Yoga Day on June 21! Book your yoga session now! 🧘‍♂️</p>
+      </div>
         <div
           className="hero-background"
           style={{
@@ -62,18 +66,31 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="about">
-        <img
-          src="https://picsum.photos/seed/174/600"
-          alt="about"
-        />
-        <div className="about-text">
-          <h2>Change your life through professional health coaching</h2>
-          <p>
-            I help clients transform their health through personalized nutrition and sustainable habits. I’ve guided over 100 clients to better well-being by focusing on small, manageable changes that lead to lasting results.
-          </p>
+      <section className="about-section">
+      <div className="about-container">
+        <div className="about-image">
+          <img
+            src="https://picsum.photos/seed/174/600"
+            alt="Sumita Dwivedi Yoga"
+          />
         </div>
-      </section>
+        <div className="about-content">
+          <h2 className="section-title">Meet Sumita Dwivedi & SwamiYogi</h2>
+          <p className="section-subtitle">
+            A Journey of Inner Peace, Balance & Transformation
+          </p>
+          <p className="about-description">
+            With over two decades of dedicated yoga practice, Sumita Dwivedi brings
+            the timeless wisdom of yoga to life. In collaboration with SwamiYogi,
+            she empowers individuals to reconnect with their inner selves, cultivate
+            holistic well-being, and lead a more conscious, purposeful life. Whether
+            you're beginning your practice or deepening it, this journey is about
+            unlocking your full potential—physically, mentally, and spiritually.
+          </p>
+          <button className="about-cta" onClick={() => navigate('/workshops')} >Start Your Journey</button>
+        </div>
+      </div>
+    </section>
 
       <section id="gallery" className="gallery">
         {showGallery ? <AutoScrollGrid /> : <div style={{ height: 400 }}></div>}

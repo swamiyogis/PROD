@@ -1,12 +1,59 @@
-import React from 'react';
+import React from "react";
+import "./SessionCard.css";
 
-export default function SessionCard({ sessionHeading, sessionSeats, date, onBookNow }) {
+export default function SessionCard({ session, onBook, user }) {
+  const {
+    sessionId,
+    sessionHeading,
+    date,
+    seatsRemaining,
+    imageUrl = "https://picsum.photos/seed/yoga/400/200",
+  } = session;
+
+  // Helper to parse date info
+  const parseSessionDate = (dateStr) => {
+    const dateObj = new Date(dateStr);
+    const options = { weekday: "long", year: "numeric", month: "short", day: "numeric" };
+    const formattedDate = dateObj.toLocaleDateString(undefined, options);
+    const formattedTime = dateObj.toLocaleTimeString(undefined, {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const weekday = dateObj.toLocaleDateString(undefined, { weekday: "long" });
+    return { formattedDate, formattedTime, weekday };
+  };
+
+  const { formattedDate, formattedTime, weekday } = parseSessionDate(date);
+
   return (
-    <div className="session-card">
-      <h3>{sessionHeading}</h3>
-      <p>Date: {date}</p>
-      <p>Seats Remaining: {sessionSeats}</p>
-      <button onClick={onBookNow}>Book Now</button>
+    <div className="session-card" key={sessionId}>
+      <div className="session-image-wrapper">
+        <img src={imageUrl} alt={sessionHeading} className="session-image" />
+      </div>
+      <div className="session-content">
+        <h3 className="session-title">{sessionHeading}</h3>
+        <p className="session-date">
+          {weekday}, {formattedDate} — {formattedTime}
+        </p>
+        <p className="session-seats">
+          Seats Remaining: <strong>{seatsRemaining}</strong>
+        </p>
+        <button
+          className="book-btn"
+          onClick={() => {
+            if (user) {
+              onBook(session);
+            } else {
+              // fallback if user not logged in
+              window.location.href = "/auth";
+            }
+          }}
+          disabled={seatsRemaining <= 0}
+          title={seatsRemaining <= 0 ? "No seats available" : "Book this session"}
+        >
+          {seatsRemaining > 0 ? "Book Now" : "Fully Booked"}
+        </button>
+      </div>
     </div>
   );
 }

@@ -10,6 +10,33 @@
   overflow: visible;
 }
 
+.announcement-bar {
+  z-index: 0;
+  width: 100%;
+  background-color: #f7f7f7;
+  color: #2d2d2d;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.announcement-bar p {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+
 /* ========== Homepage Sections ========== */
 
 /* Hero Section */
@@ -83,45 +110,80 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* About Section */
-.about {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
+.about-section {
   padding: 60px 20px;
-  background-color: white;
+  background-color: #f9f9f9;
 }
 
-.about img {
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.about-image img {
   width: 100%;
   max-width: 500px;
   border-radius: 12px;
-  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-.about-text {
-  width: 100%;
-  max-width: 500px;
+.about-content {
+  text-align: center;
+  max-width: 700px;
 }
 
-.about-text h2 {
+.section-title {
   font-size: 2rem;
-  margin-bottom: 20px;
-  color: #2f80ed;
+  font-weight: 600;
+  color: #333;
 }
 
-.about-text p {
-  font-size: 1.1rem;
-  color: #555;
+.section-subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 15px;
 }
 
-/* Gallery Section */
-.gallery {
-  padding: 60px 20px;
-  background-color: #f0f4f8;
+.about-description {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 25px;
 }
+
+.about-cta {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #2d6a4f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.about-cta:hover {
+  background-color: #1b4332;
+}
+
+@media (min-width: 768px) {
+  .about-container {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .about-content {
+    padding-left: 40px;
+  }
+}
+
+
 
 #reviews {
   max-width: 800px;
