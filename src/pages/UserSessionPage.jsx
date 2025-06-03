@@ -55,7 +55,7 @@ function UserSessionsPage() {
                 <div className="user-session-info">📅 {date}</div>
                 <div className="user-session-info">⏰ {time}</div>
                 <div className="user-session-info">👤 {session.instructor}</div>
-                <div className="user-session-price">₹ {session.amount}/-</div>
+                <div className="user-session-price"> {session.amount}/-</div>
 
                 {session.status !== 'Pending' && session.status !== 'Refunded' && (
                   <button

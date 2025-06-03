@@ -5,6 +5,7 @@ export default function SessionCard({ session, onBook, user }) {
   const {
     sessionId,
     sessionHeading,
+    amount,
     date,
     seatsRemaining,
     imageUrl = "https://picsum.photos/seed/yoga/400/200",
@@ -33,8 +34,9 @@ export default function SessionCard({ session, onBook, user }) {
       <div className="session-content">
         <h3 className="session-title">{sessionHeading}</h3>
         <p className="session-date">
-          {weekday}, {formattedDate} — {formattedTime}
+          {weekday}, — {formattedTime}
         </p>
+        <div className="session-price">{amount}/-</div>
         <p className="session-seats">
           Seats Remaining: <strong>{seatsRemaining}</strong>
         </p>
