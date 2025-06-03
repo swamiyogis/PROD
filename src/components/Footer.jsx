@@ -16,12 +16,12 @@ const Footer = () => {
       
 
       <div className="footer-content">
-        <h3>ClosetNow</h3>
+        <h3>SUMITA KARUNAPATI DUBEY</h3>
         <div className="footer-columns">
           <div className="footer-column">
             <h4>About Us</h4>
             <ul>
-              <li><Link to="/about/mission">Mission</Link></li>
+              <li><Link to="/mission">Mission</Link></li>
               
             </ul>
 
@@ -37,9 +37,8 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Social</h4>
             <ul>
-              <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+              <li><a href="https://www.instagram.com/swamiyogy?igsh=MTdiN3Q5OHQ0cDBqNA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a href="https://youtube.com/@sumita-dwivedi" target="_blank" rel="noopener noreferrer">YouTube</a></li>
             </ul>
 
           </div>
@@ -47,7 +46,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>Copyright © ClosetNow</p>
+        <p>Copyright © SwamiYogi</p>
         <p onClick={()=> navigate('/terms')}>Terms of Service</p>
         <p className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           Back to top ↑

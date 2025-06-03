@@ -75,7 +75,7 @@ const HomePage = () => {
           />
         </div>
         <div className="about-content">
-          <h2 className="section-title">Meet Sumita Dwivedi & SwamiYogi</h2>
+          <h2 className="section-title">Meet Sumita Dubey & SwamiYogi</h2>
           <p className="section-subtitle">
             A Journey of Inner Peace, Balance & Transformation
           </p>

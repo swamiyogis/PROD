@@ -12,6 +12,7 @@ const Terms = lazy(() => import('./pages/rules/Terms'));
 const Contact = lazy(() => import('./pages/rules/Contact'));
 const FAQs = lazy(() => import('./pages/rules/FAQs'));
 const RefundPolicy = lazy(() => import('./pages/rules/RefundPolicy'));
+const Mission = lazy(() => import('./pages/rules/Mission'));
 const Policy = lazy(() => import('./pages/rules/Policy'));
 const Paymentpage = lazy(() => import('./pages/PaymentMethods/PaymentsOptionPages'));
 const AuthPage = lazy(() => import('./pages/Authpage'));
@@ -43,6 +44,7 @@ function AppRoutes() {
             <Route path="contact" element={<Contact />} />
             <Route path="FAQs" element={<FAQs />} />
             <Route path="refund" element={<RefundPolicy />} />
+            <Route path="mission" element={<Mission/>} />
             <Route path="policy" element={<Policy />} />
             <Route path="YogaDay" element={<YogaDay />} />
             <Route path="mysessions" element={
