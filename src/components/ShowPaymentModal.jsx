@@ -16,7 +16,9 @@ function ShowPaymentModal ({ show, onHide, session }) {
   };
 
   const handlePayNow = () => {
-    navigate('/payment', { state: { sessionId: session.sessionId } });
+    // navigate('/payment', { state: { sessionId: session.sessionId } });
+     const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLScTFiItcGEPjMWwxXC0lq2ZHfFxmXKAYyorl9nFbjIWX6ctUQ/viewform?usp=dialog';
+     window.location.href = googleFormURL;
   };
 
   return (
@@ -50,7 +52,7 @@ function ShowPaymentModal ({ show, onHide, session }) {
               <strong>Time:</strong> {session.date}
             </li>
             <li className="listItem">
-              <strong>Amount:</strong> ₹{session.amount}
+              <strong>Amount:</strong>{session.amount}
             </li>
             <li className="listItem">
               <strong>About the Session:</strong><br />

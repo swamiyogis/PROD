@@ -1,7 +1,8 @@
 import React from "react";
 import "./SessionCard.css";
 
-export default function SessionCard({ session, onBook, user }) {
+// export default function SessionCard({ session, onBook, user }) {
+export default function SessionCard({ session, onBook}) {
   const {
     sessionId,
     sessionHeading,
@@ -42,13 +43,16 @@ export default function SessionCard({ session, onBook, user }) {
         </p>
         <button
           className="book-btn"
+          // onClick={() => {
+          //   if (user) {
+          //     onBook(session);
+          //   } else {
+          //     // fallback if user not logged in
+          //     window.location.href = "/auth";
+          //   }
+          // }}
           onClick={() => {
-            if (user) {
-              onBook(session);
-            } else {
-              // fallback if user not logged in
-              window.location.href = "/auth";
-            }
+            onBook(session);
           }}
           disabled={seatsRemaining <= 0}
           title={seatsRemaining <= 0 ? "No seats available" : "Book this session"}

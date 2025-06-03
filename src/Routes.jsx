@@ -54,13 +54,13 @@ function AppRoutes() {
             } />
           </Route>
 
-          <Route path="/payment" element={
+          {/* <Route path="/payment" element={
             <FirebaseProvider>
               <PrivateRoute>
                 <Paymentpage />
               </PrivateRoute>
             </FirebaseProvider>
-          } />
+          } /> */}
           <Route path="/payment/razorpay" element={
             <FirebaseProvider>
               <PrivateRoute>

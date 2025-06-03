@@ -12,7 +12,7 @@ import SessionCard from '../components/SessionCard';
 
 
   export default function WorkshopPage() {
-   const { user} = useAuth();
+  //  const { user} = useAuth();
     const { sessions, loadings } = fetchSession();
     const [loading, setLoading] = useState(true);
 
@@ -53,20 +53,25 @@ import SessionCard from '../components/SessionCard';
           <SessionCard
             key={session.sessionId}
             session={session}
-            user={user}
+            // user={user}
             onBook={setSelectedSession}
           />
         ))}
         </div>
 
-        {/* Conditionally render the modal */}
-        {selectedSession && (
           <ShowPaymentModal
             show={Boolean(selectedSession)}
             onHide={() => setSelectedSession(null)}
             session={selectedSession}
           />
-        )}
       </div>
     );
   }
+            {/* Conditionally render the modal */}
+            {/* {selectedSession && (
+              <ShowPaymentModal
+                show={Boolean(selectedSession)}
+                onHide={() => setSelectedSession(null)}
+                session={selectedSession}
+              />
+            )} */}

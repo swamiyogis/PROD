@@ -36,14 +36,14 @@ function MainLayout() {
             <div className="mobile-menu-item" onClick={() => goTo('/workshops')}>
               Workshops
             </div>
-            <div className="mobile-menu-item" onClick={() => goTo('/mysessions')}>
+            {/* <div className="mobile-menu-item" onClick={() => goTo('/mysessions')}>
               MySessions
             </div>
             {!loading && !user && (
               <div className="mobile-menu-item" onClick={() => goTo('/auth')}>
                 Login
               </div>
-            )}
+            )} */}
           </div>
         )}
 
@@ -52,11 +52,11 @@ function MainLayout() {
           <button className="nav-button" onClick={() => goTo('/workshops')}>
             Workshops
           </button>
-          <button className="nav-button" onClick={() => goTo('/mysessions')}>
+          {/* <button className="nav-button" onClick={() => goTo('/mysessions')}>
             MySessions
-          </button>
+          </button> */}
 
-          {!loading && (
+          {/* {!loading && (
             user ? (
               <img
                 src={imgError ? '\assets\profile.webp' : user.photoURL}
@@ -69,7 +69,7 @@ function MainLayout() {
                 Login
               </button>
             )
-          )}
+          )} */}
         </nav>
       </header>
 

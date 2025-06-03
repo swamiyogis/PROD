@@ -14,6 +14,9 @@ const RefundPolicy = () => {
       <p className="refund-text">
         If you encounter any technical issues or accidental bookings, please reach out to our support team. We’re here to help and ensure you have a smooth experience with us.
       </p>
+      <p className="refund-text">
+        Once your refund is approved the amount will be credited back to the customer source account within 15 business days.
+      </p>
     </div>
   );
 };
