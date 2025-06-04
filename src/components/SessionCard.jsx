@@ -1,19 +1,21 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./SessionCard.css";
 
-// export default function SessionCard({ session, onBook, user }) {
-export default function SessionCard({ session, onBook}) {
+export default function SessionCard({ session, onBook, user }) {
   const {
     sessionId,
     sessionHeading,
     amount,
+    currency,
     date,
     seatsRemaining,
     imageUrl = "https://picsum.photos/seed/yoga/400/200",
   } = session;
 
+
   // Helper to parse date info
   const parseSessionDate = (dateStr) => {
+    console.log(session)
     const dateObj = new Date(dateStr);
     const options = { weekday: "long", year: "numeric", month: "short", day: "numeric" };
     const formattedDate = dateObj.toLocaleDateString(undefined, options);
@@ -37,22 +39,19 @@ export default function SessionCard({ session, onBook}) {
         <p className="session-date">
           {weekday}, — {formattedTime}
         </p>
-        <div className="session-price">{amount}/-</div>
+        <div className="session-price">{currency} {amount}/-</div>
         <p className="session-seats">
           Seats Remaining: <strong>{seatsRemaining}</strong>
         </p>
         <button
           className="book-btn"
-          // onClick={() => {
-          //   if (user) {
-          //     onBook(session);
-          //   } else {
-          //     // fallback if user not logged in
-          //     window.location.href = "/auth";
-          //   }
-          // }}
           onClick={() => {
-            onBook(session);
+            if (user) {
+              onBook(session);
+            } else {
+              // fallback if user not logged in
+              window.location.href = "/auth";
+            }
           }}
           disabled={seatsRemaining <= 0}
           title={seatsRemaining <= 0 ? "No seats available" : "Book this session"}

@@ -7,6 +7,7 @@ export const parseSession = (session) => ({
   timezone: session.timezone || '',
   instructor: session.instructor || '',
   amount: session.amount || 0,
+  currency: session.currency || " ",
   description: session.description || '',
   notes: session.notes || '',
   seatsRemaining: session.seatsRemaining || 0,

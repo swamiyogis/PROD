@@ -16,9 +16,7 @@ function ShowPaymentModal ({ show, onHide, session }) {
   };
 
   const handlePayNow = () => {
-    // navigate('/payment', { state: { sessionId: session.sessionId } });
-     const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLScTFiItcGEPjMWwxXC0lq2ZHfFxmXKAYyorl9nFbjIWX6ctUQ/viewform?usp=dialog';
-     window.location.href = googleFormURL;
+    navigate('/payment', { state: { sessionId: session.sessionId } });
   };
 
   return (

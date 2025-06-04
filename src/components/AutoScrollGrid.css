@@ -7,7 +7,8 @@
 .scroll-track {
   display: flex;
   background-color: white;
-  animation: scrollX 60s linear infinite;
+  animation: scrollX 30s linear infinite;
+  width: max-content; /* prevents shrinking */
 }
 
 .scroll-item {
@@ -34,11 +35,31 @@
   animation-play-state: paused;
 }
 
+/* Infinite scroll animation */
 @keyframes scrollX {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .scroll-img {
+    width: 250px;
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .scroll-img {
+    width: 180px;
+    height: 130px;
+  }
+
+  .scroll-item {
+    margin-right: 10px;
   }
 }

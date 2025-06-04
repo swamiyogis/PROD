@@ -22,6 +22,11 @@
   color: black;
   user-select: none;
 }
+.logo-image {
+  height: 40px; /* Adjust as needed */
+  cursor: pointer;
+}
+
 
 /* Desktop Nav */
 .nav-buttons {

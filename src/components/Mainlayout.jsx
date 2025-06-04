@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../providers/AuthProvider';
 import { FaBars } from 'react-icons/fa';
 import './Mainlayout.css';
+import logo from '../assets/textlogo.png';
 
 function MainLayout() {
   const navigate = useNavigate();
@@ -19,7 +20,11 @@ function MainLayout() {
     <>
       <header className="app-bar">
         <div className="logo" onClick={() => goTo('/')}>
-          SwamiYogi
+          <img
+            src={logo}
+            alt="SwamiYogi"
+            className="logo-image"
+          />
         </div>
 
         <button
@@ -36,14 +41,14 @@ function MainLayout() {
             <div className="mobile-menu-item" onClick={() => goTo('/workshops')}>
               Workshops
             </div>
-            {/* <div className="mobile-menu-item" onClick={() => goTo('/mysessions')}>
+            <div className="mobile-menu-item" onClick={() => goTo('/mysessions')}>
               MySessions
             </div>
             {!loading && !user && (
               <div className="mobile-menu-item" onClick={() => goTo('/auth')}>
                 Login
               </div>
-            )} */}
+            )}
           </div>
         )}
 
@@ -52,11 +57,11 @@ function MainLayout() {
           <button className="nav-button" onClick={() => goTo('/workshops')}>
             Workshops
           </button>
-          {/* <button className="nav-button" onClick={() => goTo('/mysessions')}>
+          <button className="nav-button" onClick={() => goTo('/mysessions')}>
             MySessions
-          </button> */}
+          </button>
 
-          {/* {!loading && (
+          {!loading && (
             user ? (
               <img
                 src={imgError ? '\assets\profile.webp' : user.photoURL}
@@ -69,7 +74,7 @@ function MainLayout() {
                 Login
               </button>
             )
-          )} */}
+          )}
         </nav>
       </header>
 

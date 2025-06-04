@@ -12,7 +12,7 @@ import SessionCard from '../components/SessionCard';
 
 
   export default function WorkshopPage() {
-  //  const { user} = useAuth();
+    const { user} = useAuth();
     const { sessions, loadings } = fetchSession();
     const [loading, setLoading] = useState(true);
 
@@ -34,6 +34,7 @@ import SessionCard from '../components/SessionCard';
           id: key,
           ...value,
         }));
+        
 
         setLoading(false);
       });
@@ -50,28 +51,24 @@ import SessionCard from '../components/SessionCard';
           <h1 className="workshop-title">Upcoming Workshops</h1>
         <div className='workshop-grid'>
         {sessions.map((session) => (
+
           <SessionCard
             key={session.sessionId}
             session={session}
-            // user={user}
+            user={user}
             onBook={setSelectedSession}
           />
         ))}
         </div>
-
-          <ShowPaymentModal
-            show={Boolean(selectedSession)}
-            onHide={() => setSelectedSession(null)}
-            session={selectedSession}
-          />
-      </div>
-    );
-  }
-            {/* Conditionally render the modal */}
-            {/* {selectedSession && (
+          {/* Conditionally render the modal */}
+            {selectedSession && (
               <ShowPaymentModal
                 show={Boolean(selectedSession)}
                 onHide={() => setSelectedSession(null)}
                 session={selectedSession}
               />
-            )} */}
+            )}
+      </div>
+    );
+  }
+            
