@@ -21,6 +21,7 @@ const RazorpayPage = lazy(() => import('./pages/PaymentMethods/Razorpay'));
 const CashfreePage = lazy(() => import('./pages/PaymentMethods/CashFree'));
 const PaytmPage = lazy(() => import('./pages/PaymentMethods/Paytm'));
 const YogaDay = lazy(() => import('./pages/YogaDayPage'));
+const PGRedirect = lazy(() => import('./pages/PaymentMethods/PGMethods'));
 
 
 function AppRoutes() {
@@ -63,28 +64,20 @@ function AppRoutes() {
               </PrivateRoute>
             </FirebaseProvider>
           } />
-          <Route path="/payment/razorpay" element={
+          {/* <Route path="/payment/razorpay" element={
             <FirebaseProvider>
               <PrivateRoute>
                 <RazorpayPage />
               </PrivateRoute>
             </FirebaseProvider>
-          } />
+          } /> */}
           <Route path="/payment/cashfree" element={
             <FirebaseProvider>
               <PrivateRoute>
-                <CashfreePage />
+                <PGRedirect />
               </PrivateRoute>
             </FirebaseProvider>
           } />
-          <Route path="/payment/paytm" element={
-            <FirebaseProvider>
-              <PrivateRoute>
-                <PaytmPage />
-              </PrivateRoute>
-            </FirebaseProvider>
-          } />
-
 
 
           <Route path="*" element={<div>404 Not Found</div>} />

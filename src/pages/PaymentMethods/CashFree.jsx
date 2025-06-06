@@ -21,6 +21,7 @@ const Cashfree = () => {
           {
             token,
             sessions_id: sessionId,
+            PG: "CASHFREE"
           },
           {
             headers: {

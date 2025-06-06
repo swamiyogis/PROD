@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useAuth } from '../providers/AuthProvider';
 
 export const FirestoreListener = () => {
-  const prevSessionsRef = useRef([]);
+  const prevSessionsRef = useRef(new Map());
   const { user } = useAuth();
 
   useEffect(() => {
@@ -21,33 +21,35 @@ export const FirestoreListener = () => {
 
       const prevSessions = prevSessionsRef.current;
 
-      const serialize = (session) => JSON.stringify(session);
+      const newSessionsMap = new Map();
+      for (const session of newSessions) {
+        newSessionsMap.set(session.id, session);
+      }
 
-      if (prevSessions.length === 0) {
-        // First time load - do nothing
-      } else {
-        const addedSessions = newSessions.filter(
-          (s) => !prevSessions.some((p) => serialize(p) === serialize(s))
-        );
+      // Check for added or updated sessions
+      for (const [id, newSession] of newSessionsMap.entries()) {
+        const prevSession = prevSessions.get(id);
 
-        for (const session of addedSessions) {
-          if (session.status === "Confirmed") {
-            toast.success("✅ Booking confirmed");
-          } else if (session.status === "Pending") {
-            toast.info("⏳ Booking pending");
-          }
+        if (!prevSession && newSession.status === "Confirmed") {
+          toast.success("✅ Booking confirmed");
+        } else if (
+          prevSession &&
+          prevSession.status !== "Confirmed" &&
+          newSession.status === "Confirmed"
+        ) {
+          toast.success("✅ Booking confirmed");
         }
+      }
 
-        const removedSessions = prevSessions.filter(
-          (p) => !newSessions.some((s) => serialize(s) === serialize(p))
-        );
-
-        if (removedSessions.length > 0) {
+      // Check for removed sessions
+      for (const [id] of prevSessions.entries()) {
+        if (!newSessionsMap.has(id)) {
           toast.warn("⚠️ Session removed");
         }
       }
 
-      prevSessionsRef.current = newSessions;
+      // Update reference
+      prevSessionsRef.current = newSessionsMap;
     });
 
     return () => unsubscribe();

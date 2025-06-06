@@ -3,20 +3,18 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './PaymentsOptionPages.css';
 import { doc, getDoc } from "firebase/firestore";
 import { useAuth } from '../../providers/AuthProvider';
-import { collection, getDocs } from 'firebase/firestore';
-import { storedb } from '../../utils/firebaseconfig'; // adjust path as needed
-import { SiRazorpay } from "react-icons/si";
+import { storedb } from '../../utils/firebaseconfig';
 
+import { SiRazorpay, SiPhonepe } from "react-icons/si";
 
 const PaymentsOptionPages = () => {
-  const [selectedGateway, setSelectedGateway] = useState('');
+  const [selectedGateway, setSelectedGateway] = useState(null);
   const [paymentGateways, setPaymentGateways] = useState([]);
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const sessionId = location.state?.sessionId;
 
-  // ✅ Fetch payment gateways from Firestore
   useEffect(() => {
     const fetchGateways = async () => {
       try {
@@ -24,8 +22,8 @@ const PaymentsOptionPages = () => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          const data = docSnap.data(); // this is an object with keys like 0, 1, etc.
-          const gateways = Object.values(data); // convert to array
+          const data = docSnap.data();
+          const gateways = Object.values(data);
           setPaymentGateways(gateways);
         } else {
           console.log('No such document!');
@@ -38,9 +36,8 @@ const PaymentsOptionPages = () => {
     fetchGateways();
   }, []);
 
-
   const handlePayment = async () => {
-    if (!selectedGateway) {
+    if (!selectedGateway || !selectedGateway['PG-api']) {
       alert('Please select a payment method');
       return;
     }
@@ -56,25 +53,26 @@ const PaymentsOptionPages = () => {
       const payload = {
         sessionId,
         token,
-        paymentGateway: selectedGateway,
+        pg: selectedGateway['PG-api'],
+        gatewayMeta: selectedGateway
       };
 
-      switch (selectedGateway.toLowerCase()) {
-        case 'razopay':
-          navigate('/payment/razorpay', { state: payload });
-          break;
-        case 'cashfree':
-          navigate('/payment/cashfree', { state: payload });
-          break;
-        case 'paytm':
-          navigate('/payment/paytm', { state: payload });
-          break;
-        default:
-          alert(`Selected ${selectedGateway}, Out of Service`);
-      }
+      navigate('/payment/cashfree', { state: payload });
     } catch (error) {
       console.error('Error getting token:', error);
       alert('Failed to get user token. Please try again.');
+    }
+  };
+
+  // Render gateway-specific icons
+  const renderIcon = (pgName) => {
+    switch (pgName.toLowerCase()) {
+      case 'phonepe':
+        return <img src="https://cdnlogo.com/logos/p/79/phonepe.svg" width="100" />;
+      case 'cashfree':
+        return <img src="https://cashfreelogo.cashfree.com/cashfreepayments/logopng4x/Cashfree_Payments_Logo.png" width="100" />;
+      default:
+        return null;
     }
   };
 
@@ -90,10 +88,10 @@ const PaymentsOptionPages = () => {
                   type="radio"
                   name="paymentMethod"
                   value={gateway['PG-api']}
-                  onChange={(e) => setSelectedGateway(e.target.value)}
+                  onChange={() => setSelectedGateway(gateway)}
                   className="payment-radio"
                 />
-                {gateway['PG-name']}
+                {renderIcon(gateway['PG-name'])}
               </label>
             </li>
           ))}

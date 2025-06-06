@@ -15,7 +15,6 @@ export default function SessionCard({ session, onBook, user }) {
 
   // Helper to parse date info
   const parseSessionDate = (dateStr) => {
-    console.log(session)
     const dateObj = new Date(dateStr);
     const options = { weekday: "long", year: "numeric", month: "short", day: "numeric" };
     const formattedDate = dateObj.toLocaleDateString(undefined, options);
