@@ -43,12 +43,9 @@ const PGRedirect = () => {
               console.error("Missing redirect URL for PhonePe");
             }
           } else if (selectedGateway === "CASHFREE") {
-
-            
             const cashfree = await load({
-              mode: "production" //or production
+              mode: "production" 
             });
-
             const cfSessionId = data.payment_session_id;
 
             if (cfSessionId) {
