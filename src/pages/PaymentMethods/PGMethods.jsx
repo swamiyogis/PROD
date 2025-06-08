@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import cashfree from "../../utils/Cashfree";
+// import cashfree from "../../utils/Cashfree";
+import { load } from "@cashfreepayments/cashfree-js";
 import axios from "axios";
 
 const PGRedirect = () => {
@@ -42,6 +43,12 @@ const PGRedirect = () => {
               console.error("Missing redirect URL for PhonePe");
             }
           } else if (selectedGateway === "CASHFREE") {
+
+            
+            const cashfree = await load({
+              mode: "production" //or production
+            });
+
             const cfSessionId = data.payment_session_id;
 
             if (cfSessionId) {
