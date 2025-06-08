@@ -7,5 +7,4 @@ async function initializeCashfree() {
 
   return cashfree;
 }
-
 export default initializeCashfree;
