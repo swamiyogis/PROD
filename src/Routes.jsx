@@ -17,9 +17,6 @@ const Policy = lazy(() => import('./pages/rules/Policy'));
 const Paymentpage = lazy(() => import('./pages/PaymentMethods/PaymentsOptionPages'));
 const AuthPage = lazy(() => import('./pages/Authpage'));
 const UserSesisonPage = lazy(() => import('./pages/UserSessionPage'))
-const RazorpayPage = lazy(() => import('./pages/PaymentMethods/Razorpay'));
-const CashfreePage = lazy(() => import('./pages/PaymentMethods/CashFree'));
-const PaytmPage = lazy(() => import('./pages/PaymentMethods/Paytm'));
 const YogaDay = lazy(() => import('./pages/YogaDayPage'));
 const PGRedirect = lazy(() => import('./pages/PaymentMethods/PGMethods'));
 
@@ -64,13 +61,6 @@ function AppRoutes() {
               </PrivateRoute>
             </FirebaseProvider>
           } />
-          {/* <Route path="/payment/razorpay" element={
-            <FirebaseProvider>
-              <PrivateRoute>
-                <RazorpayPage />
-              </PrivateRoute>
-            </FirebaseProvider>
-          } /> */}
           <Route path="/payment/cashfree" element={
             <FirebaseProvider>
               <PrivateRoute>
