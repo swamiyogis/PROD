@@ -11,7 +11,7 @@
 
 import { load } from "@cashfreepayments/cashfree-js";
 const cashfree = await load({
-	mode: "sandbox" //or production
+	mode: "production" //or production
 });
 
 export default cashfree;
