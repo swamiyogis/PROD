@@ -1,57 +1,44 @@
+// Footer.jsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from 'react-icons/fa6';
 import './Footer.css';
+import logo from '../assets/textLogo.png';
 
 const Footer = () => {
   const navigate = useNavigate();
+
   return (
-    <footer className="footer">
-      <div className="footer-logo">
-        <div className="dot-grid">
-          {[...Array(9)].map((_, i) => (
-            <div key={i} className="dot"></div>
-          ))}
+    <footer className="custom-footer">
+      <div className="footer-inner">
+        {/* Left: Logo */}
+        <div className="footer-logo">
+          <img src={logo} alt="Yoga Logo" />
         </div>
-      </div>
-      
 
-      <div className="footer-content">
-        <h3>SUMITA KARUNAPATI DUBEY</h3>
-        <div className="footer-columns">
-          <div className="footer-column">
-            <h4>About Us</h4>
-            <ul>
-              <li><Link to="/mission">Mission</Link></li>
-              
-            </ul>
-
+        {/* Center: Copyright + Links */}
+        <div className="footer-center">
+          <div className="footer-text">
+            © 2024 SwamiYogi, LLC
+            <span> · </span>
+            <Link to="/terms">Terms & Conditions</Link>
+            <span> · </span>
+            <Link to="/refund">Refund Policy</Link>
+            <span> · </span>
+            <Link to="/faqs">Support</Link>
           </div>
-          <div className="footer-column">
-            <h4>Support</h4>
-            <ul>
-              <li><Link to="/contact">Contact</Link></li>
-              <li><Link to="/refund">Refund Policy</Link></li>
-              <li><Link to="/faqs">FAQ’s</Link></li>
-            </ul>
-          </div>
-          <div className="footer-column">
-            <h4>Social</h4>
-            <ul>
-              <li><a href="https://www.instagram.com/swamiyogy?igsh=MTdiN3Q5OHQ0cDBqNA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a href="https://youtube.com/@sumita-dwivedi" target="_blank" rel="noopener noreferrer">YouTube</a></li>
-            </ul>
-
+          <div className="footer-contact">
+            <Link to="/contact">Contact Us</Link>
           </div>
         </div>
-      </div>
 
-      <div className="footer-bottom">
-        <p>Copyright © SwamiYogi</p>
-        <p onClick={()=> navigate('/terms')}>Terms of Service</p>
-        <p className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          Back to top ↑
-        </p>
-
+        {/* Right: Social Icons */}
+        <div className="footer-social">
+          <a href="https://youtube.com/@sumita-dwivedi" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+          {/* <a href="#"><FaFacebook /></a>
+          <a href="#"><FaXTwitter /></a> */}
+          <a href="https://www.instagram.com/swamiyogy" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+        </div>
       </div>
     </footer>
   );

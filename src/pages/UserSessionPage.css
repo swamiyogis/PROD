@@ -1,42 +1,41 @@
 .user-session-container {
-  padding: 40px 20px;
-  background-color: #f8f9fa;
+  padding: 40px 16px;
+  background-color: #f0f2f5;
   min-height: 100vh;
-
   font-family: 'Segoe UI', sans-serif;
 }
 
 .user-session-title {
   text-align: center;
-  font-size: 2.5rem;
-  color: #333;
+  font-size: 2.3rem;
+  color: #1c2b36;
   margin-bottom: 30px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .user-session-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-  padding: 0 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .user-session-card {
   background-color: #ffffff;
   border-radius: 12px;
-  padding: 20px 24px;
-  max-width: 350px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-  animation: fadeIn 0.3s ease-in-out;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
   border-left: 6px solid #007bff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .user-session-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Card border colors based on status */
+/* Status-specific card borders */
 .user-session-card.confirmed {
   border-left-color: #28a745;
 }
@@ -53,79 +52,82 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .user-session-id {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: #222;
 }
 
 .user-session-status {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
   text-transform: capitalize;
 }
 
-/* Status-specific styling */
+/* Badge color styles */
 .user-session-status.confirmed {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: #e6f4ea;
+  color: #218838;
 }
 
 .user-session-status.pending {
-  background-color: #fff3cd;
-  color: #856404;
+  background-color: #fff8e1;
+  color: #b38600;
 }
 
 .user-session-status.refunded {
   background-color: #f8d7da;
-  color: #721c24;
+  color: #b02a37;
 }
 
 .user-session-info {
   font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 6px;
+  color: #444;
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .user-session-price {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #007bff;
   font-weight: 600;
-  margin-top: 10px;
-  margin-bottom: 16px;
+  margin: 12px 0 16px;
 }
 
 .user-session-btn {
   background-color: #007bff;
   color: #ffffff;
   border: none;
-  padding: 10px 16px;
+  padding: 12px 0;
   font-size: 1rem;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.2s ease-in-out;
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
-.user-session-btn:hover {
+.user-session-btn:hover:not(:disabled) {
   background-color: #0056b3;
 }
 
 .user-session-btn:disabled {
-  background-color: #ccc;
+  background-color: #c0c0c0;
   cursor: not-allowed;
 }
 
 .user-session-empty {
   text-align: center;
   font-size: 1.2rem;
-  padding: 50px;
-  color: #666;
+  padding: 50px 20px;
+  color: #777;
 }
 
 /* Entry animation */
@@ -137,5 +139,28 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .user-session-title {
+    font-size: 1.8rem;
+  }
+
+  .user-session-card {
+    padding: 16px;
+  }
+
+  .user-session-id {
+    font-size: 1rem;
+  }
+
+  .user-session-info {
+    font-size: 0.9rem;
+  }
+
+  .user-session-btn {
+    font-size: 0.95rem;
   }
 }

@@ -1,7 +1,8 @@
 .workshop-container {
   padding: 40px 20px;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto; /* ensures horizontal centering */
+  box-sizing: border-box;
 }
 
 .workshop-title {
@@ -15,5 +16,26 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
-  padding: 0 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto; /* centers the grid horizontally */
+  box-sizing: border-box;
+  padding: 0; /* remove side padding to avoid shifting */
+}
+
+/* ===== Mobile Responsive Enhancements ===== */
+@media (max-width: 768px) {
+  .workshop-container {
+    padding: 20px 15px;
+  }
+
+  .workshop-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .workshop-grid {
+    grid-template-columns: 1fr; /* full width column */
+    gap: 16px;
+  }
 }

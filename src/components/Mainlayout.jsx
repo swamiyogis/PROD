@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../providers/AuthProvider';
 import { FaBars } from 'react-icons/fa';
 import './Mainlayout.css';
-import logo from '../assets/textlogo.png';
+import logo from '../assets/textLogo.png';
 
 function MainLayout() {
   const navigate = useNavigate();
@@ -77,6 +77,11 @@ function MainLayout() {
           )}
         </nav>
       </header>
+      <div className="announcement-bar">
+                <p>
+                  Join us in celebrating <strong>International Yoga Day</strong> on <strong>June 21</strong> 🌿 — Reserve your spot for a rejuvenating session today!
+                </p>
+              </div>
 
       <main className="main-content">
         <Outlet />

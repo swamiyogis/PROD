@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import "./SessionCard.css";
 
 export default function SessionCard({ session, onBook, user }) {
@@ -12,8 +12,6 @@ export default function SessionCard({ session, onBook, user }) {
     imageUrl = "https://picsum.photos/seed/yoga/400/200",
   } = session;
 
-
-  // Helper to parse date info
   const parseSessionDate = (dateStr) => {
     const dateObj = new Date(dateStr);
     const options = { weekday: "long", year: "numeric", month: "short", day: "numeric" };
@@ -35,20 +33,14 @@ export default function SessionCard({ session, onBook, user }) {
       </div>
       <div className="session-content">
         <h3 className="session-title">{sessionHeading}</h3>
-        <p className="session-date">
-          {weekday}, — {formattedTime}
-        </p>
+        <p className="session-date">{weekday}, {formattedDate} — {formattedTime}</p>
         <div className="session-price">{currency} {amount}/-</div>
-        <p className="session-seats">
-          Seats Remaining: <strong>{seatsRemaining}</strong>
-        </p>
         <button
           className="book-btn"
           onClick={() => {
             if (user) {
               onBook(session);
             } else {
-              // fallback if user not logged in
               window.location.href = "/auth";
             }
           }}

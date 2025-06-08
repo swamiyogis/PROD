@@ -81,6 +81,12 @@
   margin-top: 8px;
 }
 
+.review-card:hover .review-text {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+
 /* Responsive for small screens */
 @media screen and (max-width: 480px) {
   .reviewCard {

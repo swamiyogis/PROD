@@ -6,34 +6,8 @@
   padding: 0;
   margin: 0;
   position: relative; /* For stacking context */
-  z-index: 1;
-  overflow: visible;
-}
-
-.announcement-bar {
   z-index: 0;
-  width: 100%;
-  background-color: #f7f7f7;
-  color: #2d2d2d;
-  font-weight: bold;
-  overflow: hidden;
-  white-space: nowrap;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  padding: 10px 0;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-}
-
-.announcement-bar p {
-  display: inline-block;
-  padding-left: 100%;
-  animation: marquee 15s linear infinite;
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  overflow: visible;
 }
 
 
@@ -285,5 +259,21 @@
 
   .about {
     padding: 30px 10px;
+  }
+}
+
+.section {
+  padding: 100px 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section {
+    padding: 40px 15px;
   }
 }
