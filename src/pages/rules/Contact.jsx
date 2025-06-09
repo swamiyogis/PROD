@@ -12,6 +12,7 @@ const Contact = () => {
           and organized space. We promise that engaging with what we make will
           help you declutter your life.
         </p>
+        <p>Sumita Karunapati Dubey</p>
       </div>
       <form className="contact-form">
         <input type="text" placeholder="Name" required />

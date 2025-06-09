@@ -30,6 +30,7 @@ const Footer = () => {
           <div className="footer-contact">
             <Link to="/contact">Contact Us</Link>
           </div>
+          <p>Sumita Karunapati Dubey</p>
         </div>
 
         {/* Right: Social Icons */}
