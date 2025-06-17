@@ -1,0 +1,132 @@
+.session-card {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 400px;
+  margin: 20px auto;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+}
+
+.session-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+.session-image-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+}
+
+.session-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.session-card:hover .session-image {
+  transform: scale(1.05);
+}
+
+.session-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.session-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #243a57;
+  margin: 0;
+}
+
+.session-date {
+  color: #4a4a4a;
+  font-size: 1rem;
+}
+
+.session-price {
+  font-size: 1rem;
+  color: #0d6efd;
+  font-weight: 600;
+ 
+}
+
+.book-btn {
+  margin-top: auto;
+  background-color: #0d6efd;
+  color: white;
+  font-weight: 600;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.book-btn:hover:not(:disabled) {
+  background-color: #0a58ca;
+}
+
+.book-btn:disabled {
+  background-color: #adb5bd;
+  cursor: not-allowed;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .session-card {
+    max-width: 90vw;
+  }
+
+  .session-image-wrapper {
+    height: 160px;
+  }
+
+  .session-title {
+    font-size: 1.2rem;
+  }
+
+  .session-date {
+    font-size: 0.95rem;
+  }
+
+  .book-btn {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .session-image-wrapper {
+    height: 140px;
+  }
+
+  .session-title {
+    font-size: 1.1rem;
+  }
+
+  .session-date {
+    font-size: 0.9rem;
+  }
+
+  .book-btn {
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+}
+
