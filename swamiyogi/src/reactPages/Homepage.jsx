@@ -1,33 +1,20 @@
-// HomePage.jsx
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+// pages/index.jsx
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import styles from './Homepage.module.css';
+import Seo from '../components/Seo'; // Updated SEO component with structuredData
+import AutoScrollGrid from '../components/AutoScrollGrid';
+import TestimonialsSection from '../components/Testimonials';
+import styles from '../styles/Homepage.module.css';
 
-import fetchReviews from './utils/reviews_fetch';
-import AutoScrollGrid from './components/AutoScrollGrid';
-import Footer from './components/Footer';
-import fetchBanners from './utils/fetchBanner';
-import TestimonialsSection from './components/Testimonials';
-import Seo from './components/seo';
+import fetchReviews from '../utils/reviews_fetch';
+import fetchBanners from '../utils/fetchBanner';
 
-export default function HomePage() {
+export default function HomePage({ heroImage, initialReviews }) {
   const router = useRouter();
   const [showGallery, setShowGallery] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
-  const [reviews, setReviews] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [heroImage, setHeroImage] = useState('');
-
-  useEffect(() => {
-    fetchReviews(5).then((data) => {
-      setReviews(data);
-      setIsLoading(false);
-    });
-    fetchBanners().then((data) => {
-      setHeroImage(data);
-    });
-  }, []);
+  const [reviews, setReviews] = useState(initialReviews || []);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -40,7 +27,6 @@ export default function HomePage() {
         setShowReviews(true);
       }
     };
-
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -50,8 +36,32 @@ export default function HomePage() {
       <Seo
         title="SwamiYogi | Transform Your Life Through Yoga"
         description="Join Sumita Dwivedi for guided online yoga sessions and workshops designed for all levels. Start your wellness journey today!"
+        keywords="yoga, wellness, meditation, SwamiYogi, online yoga, workshops, Sumita Dwivedi"
         image={`https://swamiyogi.com/${heroImage}`}
         url="https://swamiyogi.com"
+        author="Sumita Dwivedi"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Event",
+          "name": "International Yoga Day with Sumita Dwivedi",
+          "startDate": "2025-06-21T06:00:00+05:30",
+          "endDate": "2025-06-21T19:30:00+05:30",
+          "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "VirtualLocation",
+            "url": "https://swamiyogi.com/yogaday"
+          },
+          "image": [
+            "https://swamiyogi.com/images/yoga-day-event.jpg"
+          ],
+          "description": "Celebrate International Yoga Day 2025 with 3 free sessions by Sumita Dwivedi. All levels welcome. Online event.",
+          "organizer": {
+            "@type": "Person",
+            "name": "Sumita Dwivedi",
+            "url": "https://swamiyogi.com"
+          }
+        }}
       />
 
       <div className={styles['homepage']}>
@@ -64,7 +74,9 @@ export default function HomePage() {
             <div className={styles['hero-content']}>
               <p>Calorie control, balanced nutrition</p>
               <h1>Start living your <br /> healthiest life</h1>
-              <button onClick={() => router.push('/workshops')}>Book An Appointment</button>
+              <button onClick={() => router.push('/workshops')}>
+                Book An Appointment
+              </button>
             </div>
           </section>
 
@@ -104,11 +116,27 @@ export default function HomePage() {
           <hr />
 
           <section id="reviews" className={`${styles['testimonials']} ${styles['section']}`}>
-            <TestimonialsSection isLoading={isLoading} showReviews={showReviews} reviews={reviews} />
+            <TestimonialsSection
+              isLoading={isLoading}
+              showReviews={showReviews}
+              reviews={reviews}
+            />
           </section>
         </div>
-
       </div>
     </>
   );
+}
+
+// Server-side props to fetch dynamic content before render
+export async function getServerSideProps() {
+  const heroImage = await fetchBanners(); 
+  const initialReviews = await fetchReviews(5);
+
+  return {
+    props: {
+      heroImage,
+      initialReviews
+    }
+  };
 }

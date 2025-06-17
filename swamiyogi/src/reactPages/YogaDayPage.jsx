@@ -3,6 +3,37 @@ import styles from './YogaDayPage.module.css';
 import Seo from './components/seo';
 
 const YogaDayPage = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "International Yoga Day 2025 – Sessions by Sumita Dwivedi",
+    "startDate": "2025-06-21T06:00:00+05:30",
+    "endDate": "2025-06-21T19:30:00+05:30",
+    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://swamiyogi.com/yoga-day-2025"
+    },
+    "image": [
+      "https://picsum.photos/seed/yogaday/800/400"
+    ],
+    "description": "Celebrate International Yoga Day 2025 with 3 rejuvenating yoga sessions guided by Sumita Dwivedi. Open to all levels. Free and online.",
+    "organizer": {
+      "@type": "Person",
+      "name": "Sumita Dwivedi",
+      "url": "https://swamiyogi.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://swamiyogi.com/yoga-day-2025",
+      "price": "0",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2025-05-01T09:00:00+05:30"
+    }
+  };
+
   return (
     <>
       <Seo
@@ -12,6 +43,7 @@ const YogaDayPage = () => {
         author="Sumita Dwivedi"
         url="https://swamiyogi.com/yoga-day-2025"
         image="https://picsum.photos/seed/yogaday/600"
+        structuredData={structuredData}
       />
 
       <main className={styles['yoga-day-hero']}>

@@ -11,6 +11,7 @@ const Home = () => {
         <meta name="description" content="Join SwamiYogi for personalized online yoga sessions, workshops, and more. Experience wellness from the comfort of your home." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="UTF-8" />
+        <meta name="robots" content="index, follow" />
         <link rel="icon" href="/favicon.ico" />
 
         <script

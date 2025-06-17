@@ -80,8 +80,8 @@ function MainLayout({ children }) {
         className={styles['announcement-bar']}
         role="button"
         tabIndex={0}
-        onClick={() => window.location.href = '/yogaday'}
-        onKeyPress={(e) => { if (e.key === 'Enter') window.location.href = '/yogaday'; }}
+        onClick={() => window.location.href = '/yoga-day-2025'}
+        onKeyPress={(e) => { if (e.key === 'Enter') window.location.href = '/yoga-day-2025'; }}
         style={{ cursor: 'pointer' }}
       >
         <p>

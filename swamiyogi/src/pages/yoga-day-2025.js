@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 
 const YogaDayPage = dynamic(() => import('@/reactPages/YogaDayPage'), { ssr: false });
 
-export default function yogaday() {
+export default function yogaday2025() {
   return (
     <>
       <Head>

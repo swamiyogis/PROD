@@ -36,6 +36,7 @@ const Seo = ({
     <meta name="keywords" content={keywords} />
     <meta name="author" content={author} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
     <meta charSet="UTF-8" />
 
     {/* Open Graph */}
@@ -51,7 +52,7 @@ const Seo = ({
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href="/favicon.ico" />
 
     {structuredData && (
       <script
