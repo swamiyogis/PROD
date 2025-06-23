@@ -26,15 +26,12 @@ jobs:
         run: |
           npm i
           npm run build
-      - name: Check .next folder exists
-        run: |
-          ls -la
-          ls -la .next || echo ".next not created"
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Output
           path: .next/
+          include-hidden-files: true
 
   push-to-dev-repo:
     runs-on: ubuntu-latest
