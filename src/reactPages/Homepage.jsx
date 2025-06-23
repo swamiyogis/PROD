@@ -1,13 +1,13 @@
 // pages/index.jsx
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Seo from '../components/Seo'; // Updated SEO component with structuredData
-import AutoScrollGrid from '../components/AutoScrollGrid';
-import TestimonialsSection from '../components/Testimonials';
-import styles from '../styles/Homepage.module.css';
+import Seo from './components/seo'; // Updated SEO component with structuredData
+import AutoScrollGrid from './components/AutoScrollGrid';
+import TestimonialsSection from './components/Testimonials';
+import styles from './styles/Homepage.module.css';
 
-import fetchReviews from '../utils/reviews_fetch';
-import fetchBanners from '../utils/fetchBanner';
+import fetchReviews from './utils/reviews_fetch';
+import fetchBanners from './utils/fetchBanner';
 
 export default function HomePage({ heroImage, initialReviews }) {
   const router = useRouter();
