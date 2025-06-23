@@ -2,8 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
 
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ];
+  },
+
   async headers() {
-    // Remove x-robots-tag header in development
     if (process.env.NODE_ENV !== 'production') {
       return [
         {
@@ -11,14 +19,13 @@ const nextConfig = {
           headers: [
             {
               key: 'x-robots-tag',
-              value: '', // empty value removes the header
+              value: '', // Removes x-robots-tag in dev
             },
           ],
         },
       ];
     }
 
-    // No change in production
     return [];
   },
 };
