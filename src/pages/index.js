@@ -30,7 +30,6 @@ const Home = () => {
           }) }}
         />
       </Head>
-
       <HomePage />
     </>
   );
