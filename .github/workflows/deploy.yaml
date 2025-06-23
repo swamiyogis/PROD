@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Output
-          path: out/
+          path: .next/
 
   push-to-dev-repo:
     runs-on: ubuntu-latest
