@@ -26,6 +26,7 @@ jobs:
         run: |
           npm i
           npm run build
+          npx next export
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
