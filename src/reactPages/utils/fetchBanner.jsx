@@ -9,15 +9,24 @@ const fetchBanners = async () => {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      const url = docSnap.data().poster; // assuming `poster` is a URL string
-      return url; // ✅ returns the banner URL
+      const data = docSnap.data();
+      return {
+        poster: data.poster || '',
+        aboutBanner: data.aboutbanner || ''
+      };
     } else {
       console.warn('No banner document found.');
-      return '';
+      return {
+        poster: '',
+        aboutBanner: ''
+      };
     }
   } catch (error) {
     console.error('Error loading banner image:', error);
-    return '';
+    return {
+      poster: '',
+      aboutBanner: ''
+    };
   }
 };
 

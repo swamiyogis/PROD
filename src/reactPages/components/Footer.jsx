@@ -26,11 +26,12 @@ const Footer = () => {
             <Link rel="preload" href="/refund" alt="refund">Refund Policy</Link>
             <span> · </span>
             <Link rel="preload" href="/faqs" alt="faqs">Support</Link>
+            <span> · </span>
+            <Link rel="preload" href="/about" alt="faqs">About</Link>
           </div>
           <div className={styles['footer-contact']}>
             <Link rel="preload" href="/contact" alt="contact">Contact Us</Link>
           </div>
-          <p>Sumita Karunapati Dubey</p>
         </div>
 
         {/* Right: Social Icons */}

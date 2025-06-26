@@ -1,0 +1,109 @@
+.page {
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', sans-serif;
+  color: #222;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.heroSection {
+  background: linear-gradient(to right, #e6f0ec, #fdfdfd);
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1f3d2d;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #4a5568;
+}
+
+/* Layout Grid */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.imageWrapper {
+  flex: 1 1 350px;
+  max-width: 400px;
+}
+
+.image {
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.content {
+  flex: 1 1 500px;
+}
+
+.content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.content ul {
+  margin: 1rem 0 2rem;
+  padding-left: 1.5rem;
+  line-height: 1.8;
+  list-style-type: disc;
+}
+
+.closing {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.ctaButton {
+  padding: 0.75rem 1.5rem;
+  background-color: #276749;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #2f855a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imageWrapper,
+  .content {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+}

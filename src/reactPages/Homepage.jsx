@@ -9,7 +9,7 @@ import styles from './Homepage.module.css';
 import fetchReviews from './utils/reviews_fetch';
 import fetchBanners from './utils/fetchBanner';
 
-export default function HomePage({ heroImage, initialReviews }) {
+export default function HomePage({ heroImage, aboutBanner, initialReviews }) {
   const router = useRouter();
   const [showGallery, setShowGallery] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
@@ -84,21 +84,25 @@ export default function HomePage({ heroImage, initialReviews }) {
             <div className={styles['about-container']}>
               <div className={styles['about-image']}>
                 <img
-                  src="https://picsum.photos/seed/174/600"
+                  src={aboutBanner}
                   alt="Sumita Dwivedi Yoga"
                 />
               </div>
               <div className={styles['about-content']}>
-                <h2 className={styles['section-title']}>Meet Sumita Dubey & SwamiYogi</h2>
+                <h2 className={styles['section-title']}>Meet Sumita Dwivedi</h2>
+                
                 <p className={styles['section-subtitle']}>
                   A Journey of Inner Peace, Balance & Transformation
                 </p>
+
                 <p className={styles['about-description']}>
-                  With over two decades of dedicated yoga practice, Sumita Dwivedi brings
-                  the timeless wisdom of yoga to life. In collaboration with SwamiYogi,
-                  she empowers individuals to reconnect with their inner selves, cultivate
-                  holistic well-being, and lead a more conscious, purposeful life.
+                  Namaste, I’m <strong>Sumita Dwivedi</strong>, a devoted yoga practitioner and instructor with over 20 years of experience. My journey has been one of deep self-discovery, healing, and sharing the powerful wisdom of yoga with others.
                 </p>
+
+                <p className={styles['about-description']}>
+                  <em>Har Har Mahadev!</em>
+                </p>
+
                 <button
                   className={styles['about-cta']}
                   onClick={() => router.push('/workshops')}
@@ -106,6 +110,7 @@ export default function HomePage({ heroImage, initialReviews }) {
                   Start Your Journey
                 </button>
               </div>
+
             </div>
           </section>
 
@@ -130,12 +135,13 @@ export default function HomePage({ heroImage, initialReviews }) {
 
 // Server-side props to fetch dynamic content before render
 export async function getServerSideProps() {
-  const heroImage = await fetchBanners(); 
+  const { heroImage, aboutBanner } = await fetchBanners(); 
   const initialReviews = await fetchReviews(40);
 
   return {
     props: {
       heroImage,
+      aboutBanner,
       initialReviews
     }
   };
