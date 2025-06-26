@@ -10,6 +10,7 @@ const auth = () =>  {
     <>
       <Head>
         <title>Login / Authentication | SwamiYogi</title>
+         <meta name="description" content="SwamiYogi - A modern platform for yoga practices, poses, and inner peace."/>
       </Head>
       <FirebaseProvider>
         <PublicRoute>

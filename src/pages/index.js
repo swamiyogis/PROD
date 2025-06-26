@@ -13,7 +13,6 @@ const Home = () => {
         <meta charSet="UTF-8" />
         <meta name="robots" content="index, follow" />
         <link rel="icon" href="/favicon.ico" />
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({

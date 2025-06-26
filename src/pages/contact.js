@@ -8,6 +8,7 @@ export default function contact() {
     <>
       <Head>
         <title>Contact Us | SwamiYogi</title>
+        <meta name="description" content="SwamiYogi - A modern platform for yoga practices, poses, and inner peace."/>
       </Head>
       <Contact />
     </>

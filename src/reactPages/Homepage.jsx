@@ -131,7 +131,7 @@ export default function HomePage({ heroImage, initialReviews }) {
 // Server-side props to fetch dynamic content before render
 export async function getServerSideProps() {
   const heroImage = await fetchBanners(); 
-  const initialReviews = await fetchReviews(5);
+  const initialReviews = await fetchReviews(40);
 
   return {
     props: {
