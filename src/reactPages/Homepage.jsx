@@ -8,7 +8,7 @@ import styles from './Homepage.module.css';
 
 
 
-export default function HomePage({ poster, aboutBanner, initialReviews }) {
+export default function HomePage({ poster, aboutbanner, initialReviews }) {
   const router = useRouter();
   const [showGallery, setShowGallery] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
@@ -83,7 +83,7 @@ export default function HomePage({ poster, aboutBanner, initialReviews }) {
             <div className={styles['about-container']}>
               <div className={styles['about-image']}>
                 <img
-                  src={aboutBanner}
+                  src={aboutbanner}
                   alt="Sumita Dwivedi Yoga"
                 />
               </div>

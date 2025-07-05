@@ -37,13 +37,13 @@ const Home = (props) => {
 }
 export async function getServerSideProps() {
   try {
-    const { poster, aboutBanner } = await fetchBanners();
+    const { poster, aboutbanner } = await fetchBanners();
     const initialReviews = await fetchReviews(40);
     
     return {
       props: {
         poster: poster ?? null,
-        aboutBanner: aboutBanner ?? null,
+        aboutbanner: aboutbanner ?? null,
         initialReviews: initialReviews ?? [],
       },
     };
@@ -54,7 +54,7 @@ export async function getServerSideProps() {
     return {
       props: {
         poster: null,
-        aboutBanner: null,
+        aboutbanner: null,
         initialReviews: [],
       },
     };

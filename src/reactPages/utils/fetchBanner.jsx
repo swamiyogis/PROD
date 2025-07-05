@@ -12,20 +12,20 @@ const fetchBanners = async () => {
       const data = docSnap.data();
       return {
         poster: data.poster || '',
-        aboutBanner: data.aboutbanner || ''
+        aboutbanner: data.aboutbanner || ''
       };
     } else {
       console.warn('No banner document found.');
       return {
         poster: '',
-        aboutBanner: ''
+        aboutbanner: ''
       };
     }
   } catch (error) {
     console.error('Error loading banner image:', error);
     return {
       poster: '',
-      aboutBanner: ''
+      aboutbanner: ''
     };
   }
 };
