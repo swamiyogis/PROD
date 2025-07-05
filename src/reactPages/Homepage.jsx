@@ -6,10 +6,9 @@ import AutoScrollGrid from './components/AutoScrollGrid';
 import TestimonialsSection from './components/Testimonials';
 import styles from './Homepage.module.css';
 
-import fetchReviews from './utils/reviews_fetch';
-import fetchBanners from './utils/fetchBanner';
 
-export default function HomePage({ heroImage, aboutBanner, initialReviews }) {
+
+export default function HomePage({ poster, aboutBanner, initialReviews }) {
   const router = useRouter();
   const [showGallery, setShowGallery] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
@@ -37,7 +36,7 @@ export default function HomePage({ heroImage, aboutBanner, initialReviews }) {
         title="SwamiYogi | Transform Your Life Through Yoga"
         description="Join Sumita Dwivedi for guided online yoga sessions and workshops designed for all levels. Start your wellness journey today!"
         keywords="yoga, wellness, meditation, SwamiYogi, online yoga, workshops, Sumita Dwivedi"
-        image={`https://swamiyogi.com/${heroImage}`}
+        image={`https://swamiyogi.com/${poster}`}
         url="https://swamiyogi.com"
         author="Sumita Dwivedi"
         structuredData={{
@@ -69,7 +68,7 @@ export default function HomePage({ heroImage, aboutBanner, initialReviews }) {
           <section className={`${styles['hero']} ${styles['section']}`}>
             <div
               className={styles['hero-background']}
-              style={{ backgroundImage: `url('${heroImage}')` }}
+              style={{ backgroundImage: `url('${poster}')` }}
             />
             <div className={styles['hero-content']}>
               <p>Calorie control, balanced nutrition</p>
@@ -133,16 +132,17 @@ export default function HomePage({ heroImage, aboutBanner, initialReviews }) {
   );
 }
 
-// Server-side props to fetch dynamic content before render
-export async function getServerSideProps() {
-  const { heroImage, aboutBanner } = await fetchBanners(); 
-  const initialReviews = await fetchReviews(40);
+// // Server-side props to fetch dynamic content before render
+// export async function getServerSideProps() {
+//   console.log("🔄 getServerSideProps is running...");
+//   const { heroImage, aboutBanner } = await fetchBanners(); 
+//   const initialReviews = await fetchReviews(40);
 
-  return {
-    props: {
-      heroImage,
-      aboutBanner,
-      initialReviews
-    }
-  };
-}
+//   return {
+//     props: {
+//       heroImage,
+//       aboutBanner,
+//       initialReviews
+//     }
+//   };
+// }

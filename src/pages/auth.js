@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { FirebaseProvider } from '.././reactPages/providers/firebaseProvider';
 import {PublicRoute} from '.././reactPages/utils/publicrouter'
 
-const Auth = dynamic(() => import('@/reactPages/Authpage'), { ssr: false });
+const Auth = dynamic(() => import('@/reactPages/Authpage'));
 
 const auth = () =>  {
   return (

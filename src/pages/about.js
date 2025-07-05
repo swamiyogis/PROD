@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 
-const About = dynamic(() => import('@/reactPages/rules/About'), { ssr: false });
+const About = dynamic(() => import('@/reactPages/rules/About'));
 
 const about = () =>  {
   return (

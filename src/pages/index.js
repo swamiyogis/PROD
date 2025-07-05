@@ -1,9 +1,11 @@
 import Head from "next/head";
 import dynamic from 'next/dynamic';
+import fetchReviews from '../reactPages/utils/reviews_fetch';
+import fetchBanners from '../reactPages/utils/fetchBanner';
 
-const HomePage = dynamic(() => import('../reactPages/Homepage').then(mod => mod.default), { ssr: false });
+const HomePage = dynamic(() => import('../reactPages/Homepage'), { ssr: true });
 
-const Home = () => {
+const Home = (props) => {
   return (
     <>
       <Head>
@@ -29,9 +31,35 @@ const Home = () => {
           }) }}
         />
       </Head>
-      <HomePage />
+      <HomePage {...props} />
     </>
   );
 }
+export async function getServerSideProps() {
+  try {
+    const { poster, aboutBanner } = await fetchBanners();
+    const initialReviews = await fetchReviews(40);
+    
+    return {
+      props: {
+        poster: poster ?? null,
+        aboutBanner: aboutBanner ?? null,
+        initialReviews: initialReviews ?? [],
+      },
+    };
+  } catch (error) {
+    console.error("Error in getServerSideProps:", error);
+
+    // Optional: redirect to an error page or show fallback UI
+    return {
+      props: {
+        poster: null,
+        aboutBanner: null,
+        initialReviews: [],
+      },
+    };
+  }
+}
+
 
 export default Home;

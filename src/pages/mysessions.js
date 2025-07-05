@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { FirebaseProvider } from '../reactPages/providers/firebaseProvider';
 import { PrivateRoute } from '../reactPages/utils/privaterouter';
 
-const UserSessionPage = dynamic(() => import('@/reactPages/UserSessionPage'), { ssr: false });
+const UserSessionPage = dynamic(() => import('@/reactPages/UserSessionPage'));
 
 export default function MySessionsPage() {
   return (

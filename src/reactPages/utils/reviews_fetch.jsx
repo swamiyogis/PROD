@@ -10,7 +10,7 @@ const fetchReviews = async (limitCount = 5) => {
       id: doc.id,
       ...doc.data()
     }));
-
+    
     return reviews;
   } catch (error) {
     console.error('Error fetching reviews:', error);
