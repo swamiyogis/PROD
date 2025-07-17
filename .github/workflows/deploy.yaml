@@ -1,7 +1,6 @@
-name: Build Flutter Web
+name: Build Next.js Web
 
 on:
-
   push:
     branches: [ main ]
   workflow_dispatch:
@@ -16,21 +15,23 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-    
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22.15.0
 
-      - name: Build Node
+      - name: Install dependencies and build static export
         run: |
-          npm i
+          npm install
           npm run build
-      - name: Upload build artifacts
+          npx next export
+
+      - name: Upload static build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Output
-          path: .next/
+          path: out/
           include-hidden-files: true
 
   push-to-dev-repo:
@@ -55,26 +56,17 @@ jobs:
         run: |
           git clone --branch main https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ secrets.MY_ORG }}/${{ secrets.TARGET_REPO }}.git target-repo
 
-      - name: Copy build output to target repo (replace contents without deleting)
+      - name: Copy only build output to target repo (clean & replace)
         run: |
           NEW_BRANCH="web-release-${{ github.run_number }}"
           cd target-repo
-          git fetch origin
-          git checkout main
-          git pull origin main
-          if git rev-parse --verify "$NEW_BRANCH"; then
-            git branch -D "$NEW_BRANCH"
-          fi
-          git checkout -b "$NEW_BRANCH"
-          cd ..
-          rm -rf target-repo/website/*
-          cp -r website/* target-repo/website/
-          cd target-repo
+          git checkout -B "$NEW_BRANCH" origin/main
+          rm -rf * .[^.] .??*  # delete everything except .git and hidden dirs safely
+          cp -r ../website/* .
           git add .
-          git commit -m "Update Flutter web build output (run ${{ github.run_number }})"
+          git commit -m "Update static build output (run ${{ github.run_number }})"
           git push origin "$NEW_BRANCH"
         shell: bash
-
 
       - name: Authenticate with GitHub CLI
         run: gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
@@ -84,10 +76,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          PR_URL=$(gh pr create --repo ${{ secrets.MY_ORG }}/${{ secrets.TARGET_REPO }} --base main --head web-release-${{ github.run_number }} --title "Deploy Flutter Web Build - Run #${{ github.run_number }}" --body "This PR contains the Flutter Web build artifacts.")
+          PR_URL=$(gh pr create --repo ${{ secrets.MY_ORG }}/${{ secrets.TARGET_REPO }} --base main --head web-release-${{ github.run_number }} --title "Deploy Next.js Static Build - Run #${{ github.run_number }}" --body "This PR contains static build artifacts.")
           echo "PR_URL=$PR_URL" >> $GITHUB_ENV
 
-      - uses: actions/checkout@v4
       - name: Wait and squash merge PR
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
