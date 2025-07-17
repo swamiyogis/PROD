@@ -24,8 +24,7 @@ jobs:
       - name: Install dependencies and build static export
         run: |
           npm install
-          npm run build
-          npx next export
+          npm run build  # `out/` is generated automatically if `output: 'export'` is in next.config.js
 
       - name: Upload static build artifacts
         uses: actions/upload-artifact@v4
@@ -61,7 +60,7 @@ jobs:
           NEW_BRANCH="web-release-${{ github.run_number }}"
           cd target-repo
           git checkout -B "$NEW_BRANCH" origin/main
-          rm -rf * .[^.] .??*  # delete everything except .git and hidden dirs safely
+          rm -rf * .[^.] .??*  # delete everything except .git
           cp -r ../website/* .
           git add .
           git commit -m "Update static build output (run ${{ github.run_number }})"
