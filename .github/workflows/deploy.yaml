@@ -61,9 +61,7 @@ jobs:
         run: |
           cd target-repo
           git checkout -B web-release-${{ github.run_number }} origin/main
-          shopt -s extglob
-          rm -rf !(.git)
-          cp -r ../website/* .
+          rsync -av --delete ../website/ . --exclude='.git'
           git add .
           git commit -m "Deploy static build (run ${{ github.run_number }})"
           git push origin web-release-${{ github.run_number }}
