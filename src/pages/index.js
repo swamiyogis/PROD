@@ -35,11 +35,11 @@ const Home = (props) => {
     </>
   );
 }
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const { poster, aboutbanner } = await fetchBanners();
     const initialReviews = await fetchReviews(40);
-    
+
     return {
       props: {
         poster: poster ?? null,
@@ -48,9 +48,7 @@ export async function getServerSideProps() {
       },
     };
   } catch (error) {
-    console.error("Error in getServerSideProps:", error);
-
-    // Optional: redirect to an error page or show fallback UI
+    console.error("Error in getStaticProps:", error);
     return {
       props: {
         poster: null,
@@ -60,6 +58,7 @@ export async function getServerSideProps() {
     };
   }
 }
+
 
 
 export default Home;
