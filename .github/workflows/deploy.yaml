@@ -72,10 +72,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
           PR_URL=$(gh pr create --repo ${{ secrets.MY_ORG }}/${{ secrets.TARGET_REPO }} \
             --base main \
             --head web-release-${{ github.run_number }} \
             --title "Deploy Static Build - Run #${{ github.run_number }}" \
             --body "Automated PR with static site output.")
-          echo "Created PR: $PR_URL_
+          echo "Created PR: $PR_URL"
+
