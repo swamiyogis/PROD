@@ -77,3 +77,28 @@ jobs:
             --body "Automated PR with static site output.")
           echo "Created PR: $PR_URL"
 
+
+
+
+      - name: Wait and squash merge PR
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          PR_URL: ${{ env.PR_URL }}
+        run: |
+          PR_NUMBER=$(basename "$PR_URL")
+          MAX_RETRIES=20
+          SLEEP_SECONDS=15
+          for i in $(seq 1 $MAX_RETRIES); do
+            MERGEABLE_STATE=$(gh pr view "$PR_NUMBER" --repo ${{ secrets.MY_ORG }}/${{ secrets.TARGET_REPO }} --json mergeable --template '{{.mergeable}}')
+            if [ "$MERGEABLE_STATE" = "MERGEABLE" ]; then
+              gh pr merge "$PR_NUMBER" --repo ${{ secrets.MY_ORG }}/${{ secrets.TARGET_REPO }} --squash
+              exit 0
+            elif [ "$MERGEABLE_STATE" = "CONFLICTING" ]; then
+              echo "PR has conflicts; cannot merge."
+              exit 1
+            fi
+            sleep $SLEEP_SECONDS
+          done
+          echo "Timed out waiting for PR to become mergeable."
+          exit 1
+
