@@ -76,16 +76,14 @@ jobs:
             --title "Deploy Static Build - Run #${{ github.run_number }}" \
             --body "Automated PR with static site output.")
           echo "Created PR: $PR_URL"
-
-
-
+          echo "PR_URL=$PR_URL" >> $GITHUB_ENV
 
       - name: Wait and squash merge PR
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
           PR_URL: ${{ env.PR_URL }}
         run: |
-          PR_NUMBER=$(basename "$PR_URL")
+          PR_NUMBER=$(echo "$PR_URL" | awk -F/ '{print $NF}')
           MAX_RETRIES=20
           SLEEP_SECONDS=15
           for i in $(seq 1 $MAX_RETRIES); do
@@ -101,4 +99,3 @@ jobs:
           done
           echo "Timed out waiting for PR to become mergeable."
           exit 1
-
