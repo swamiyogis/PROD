@@ -57,16 +57,17 @@ jobs:
         run: |
           git clone --branch main https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ secrets.MY_ORG }}/${{ secrets.TARGET_REPO }}.git target-repo
 
-      - name: Replace contents with static build
+      - name: Add static build to new branch
         run: |
           cd target-repo
           git checkout -B web-release-${{ github.run_number }} origin/main
-          rsync -av --delete ../website/ . --exclude='.git'
-          git add .
+          mkdir -p static-site
+          rsync -av ../website/ static-site/ --exclude='.git'
+          git add static-site/
           git commit -m "Deploy static build (run ${{ github.run_number }})"
           git push origin web-release-${{ github.run_number }}
 
-      - name: Create PR and merge
+      - name: Create PR
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
@@ -99,3 +100,4 @@ jobs:
           done
           echo "Timed out waiting for PR to become mergeable."
           exit 1
+
